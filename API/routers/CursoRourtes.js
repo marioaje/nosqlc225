@@ -54,7 +54,7 @@ router.put('/:id', async(req, res) =>{
 
 //Obtener 
 router.delete('/:id', async(req, res) =>{
-        const dato = await Curso.findByIdAndDelete({id: req.params.id});
+        const dato = await Curso.findOneAndDelete({id: req.params.id});
         if (dato) {
             res.status(200).json({mensaje: "El elemento fue eliminado"});
         }
