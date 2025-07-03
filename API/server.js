@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 //Formateo de los datos
 const bodyParse = require('body-parser');
 
+const RouterCurso = require('./routers/CursoRourtes');
+
 //asginas rutas
 //variables para el https o web
 const cors = require('cors');
@@ -16,9 +18,20 @@ const app = express();
 const PORT = 3000;
 
 
+//Conexion hacia mongodb 
+mongoose.connect('mongodb://127.0.0.1:27017/academias',{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 //Middlewares el router del htpp
 app.use(cors());
 app.use(bodyParse.json());
+
+
+
+//Rutas del api
+app.use('/api/cursos', RouterCurso)
 
 //Ocupamos el servidor funcional
 app.listen(PORT, ()=> {
