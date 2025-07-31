@@ -140,12 +140,19 @@
                                 <a
                                     name="guardardatos"
                                     id="guardardatos"
-                                    class="btn btn-primary"
-                                    href="#"
+                                    class="btn btn-primary"                                    
                                     role="button"
                                     >Guardar</a
                                 >
-                                
+
+                                                                <a
+                                    name="actualizardatos"
+                                    id="actualizardatos"
+                                    class="btn btn-success"
+                                    style="display: none;"
+                                    role="button"
+                                    >Actualizar</a
+                                >
                             </div>
                             
 
@@ -214,7 +221,7 @@ $(document).ready(function () {
                                     name=""
                                     id=""
                                     class="btn btn-primary"
-                                    href=""
+                                    onclick="editarDatos('${item.id}','${item.nombre}','${item.descripcion}','${item.estado}')"
                                     role="button"
                                     >Editar</a
                                 >
@@ -274,7 +281,18 @@ $(document).ready(function () {
     });
 
 
+    //actualizardatos
 
+
+    window.editarDatos = function (id, nombre, descripcion , estado){
+        $("#id").val(id);
+        $("#nombre").val(nombre);
+        $("#descripcion").val(descripcion);
+        $("#estado").val(estado);
+        $("#guardardatos").hide();
+        $("#actualizardatos").show();
+
+    }
 //Fin de funciones y eventos    
 
     cargarDatos();
