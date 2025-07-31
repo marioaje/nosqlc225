@@ -151,8 +151,16 @@
                                     class="btn btn-success"
                                     style="display: none;"
                                     role="button"
-                                    >Actualizar</a
+                                    >Actualizar</a                                    
                                 >
+
+                                <input
+                                    onclick="limpiarFormulario()"
+                                    class="btn btn-danger"
+                                    type="button"
+                                    value="Limpiar"
+                                />
+                                
                             </div>
                             
 
@@ -196,6 +204,20 @@
 
 
 <script>
+
+
+    function limpiarFormulario(){
+        $("#id").val("");
+        $("#nombre").val("");
+        $("#descripcion").val("");
+        $("#estado").val("");
+        $("#guardardatos").show();
+        $("#actualizardatos").hide();
+    }
+
+
+
+
 $(document).ready(function () {
     
     const API_URL ='http://localhost:3000/api/cursos/';
@@ -269,7 +291,7 @@ $(document).ready(function () {
             data: JSON.stringify(nuevoDato),
             success: function(){
                 alert("Se almaceno los datos");
-                //limpiarFormulario();
+                limpiarFormulario();
                 cargarDatos();
             },
             error: function (err){
