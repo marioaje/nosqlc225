@@ -83,8 +83,76 @@
 
                         
                     </header>
-                    <main>
+                    <div class="container">
                         <h1>Curso</h1>
+
+                        <div class="container">
+
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nombre</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="nombre"
+                                    id="nombre"
+                                    aria-describedby="helpId"
+                                    placeholder=""
+                                />
+                                <small id="helpId" class="form-text text-muted">Ingrese su nombre</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">descripcion</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="descripcion"
+                                    id="descripcion"
+                                    aria-describedby="helpId"
+                                    placeholder=""
+                                />
+                                <small id="helpId" class="form-text text-muted">Help text descripcion</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">estado</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="estado"
+                                    id="estado"
+                                    aria-describedby="helpId"
+                                    placeholder=""
+                                />
+                                <small id="helpId" class="form-text text-muted">Help text estado</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Id</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="id"
+                                    id="id"
+                                    aria-describedby="helpId"
+                                    placeholder=""
+                                />
+                                <small id="helpId" class="form-text text-muted">Help text Id</small>
+                            </div>   
+                            <div class="mb-3">
+                                <a
+                                    name="guardardatos"
+                                    id="guardardatos"
+                                    class="btn btn-primary"
+                                    href="#"
+                                    role="button"
+                                    >Guardar</a
+                                >
+                                
+                            </div>
+                            
+
+                        </div>
+
+
+
 
                         <div
                             class="table-responsive"
@@ -108,7 +176,7 @@
                             </table>
                         </div>
                         
-                    </main>
+                    </div>
                     <footer>
                         <!-- place footer here -->
                     </footer>
@@ -129,12 +197,7 @@ $(document).ready(function () {
 
 
 
-            /*                    "_id": "6866c6df7192a97383e8093a",
-    "id": 123,
-    "nombre": "NoSQL",
-    "descripcion": "Curso de base de datos no relacionales.",
-    "estado": "Activo",
-    "__v": 0*/
+
     function cargarDatos(){
         $.get(API_URL, function(data){
                 console.log(data);
@@ -171,6 +234,45 @@ $(document).ready(function () {
             }     
         )
     }
+
+
+
+
+    //guardardatos
+            /*                    "_id": "6866c6df7192a97383e8093a",
+    "id": 123,
+    "nombre": "NoSQL",
+    "descripcion": "Curso de base de datos no relacionales.",
+    "estado": "Activo",
+    "__v": 0*/
+    $("#guardardatos").click(function(e){
+        
+        const nuevoDato = {
+            nombre: $("#nombre").val() ,
+            descripcion: $("#descripcion").val()  ,
+            id: $("#id").val() ,
+            estado: $("#estado").val() 
+
+        };
+
+        $.ajax({
+            url:API_URL,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(nuevoDato),
+            success: function(){
+                alert("Se almaceno los datos");
+                //limpiarFormulario();
+                cargarDatos();
+            },
+            error: function (err){
+                alert('error: ' + err);
+            }
+
+        });
+        
+    });
+
 
 
 //Fin de funciones y eventos    
