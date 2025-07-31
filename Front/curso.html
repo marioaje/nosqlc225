@@ -16,6 +16,9 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        
     </head>
 
     <body>
@@ -74,23 +77,113 @@
                 <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
                 <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
             </div>
-            
-            <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
-            <script>
-                var triggerEl = document.querySelector("#navId a");
-                bootstrap.Tab.getInstance(triggerEl).show(); // Select tab by name
-            </script>
+
             
         </header>
         <main>
             <h1>Curso</h1>
 
+            <div
+                class="table-responsive"
+            >
+                <table
+                    class="table table-primary"
+                >
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Decripcion</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
 
+<!-- 
+
+                                "_id": "6866c6df7192a97383e8093a",
+    "id": 123,
+    "nombre": "NoSQL",
+    "descripcion": "Curso de base de datos no relacionales.",
+    "estado": "Activo",
+    "__v": 0 -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td scope="row">R1C1</td>
+                            <td>R1C2</td>
+                            <td>R1C2</td>
+                            <td>R1C3</td>
+                            <td>
+                                <a
+                                    name=""
+                                    id=""
+                                    class="btn btn-primary"
+                                    href=""
+                                    role="button"
+                                    >Editar</a
+                                >
+                                
+                                <a
+                                    name=""
+                                    id=""
+                                    class="btn btn-danger"
+                                    href=""
+                                    role="button"
+                                    >Elimninar</a
+                                >
+
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td scope="row">Item</td>
+                            <td>Item</td>
+                            <td>Item</td>
+                            <td>Item</td>                            
+                            <td>Item</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
         </main>
         <footer>
             <!-- place footer here -->
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
+
+
+
+
+
+<script>
+$(document).ready(function () {
+    
+    const API_URL ='http://localhost:3000/api/cursos/';
+
+//Funciones
+    function cargarDatos(){
+        $.get(API_URL, function(data){
+                console.log(data);
+            }     
+        )
+    }
+
+
+//Fin de funciones y eventos    
+
+    cargarDatos();
+
+});
+
+
+</script>
+
+
+
+
+
+
+
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
